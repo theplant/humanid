@@ -14,13 +14,14 @@ var chars = []rune{
 
 func New() (id string) {
 	rand.Seed(time.Now().UnixNano())
-	var vals []rune
-	for i := 0; i < 8; i++ {
+	var vals = make([]rune, 9)
+	for i := 0; i < 9; i++ {
 		c := chars[rand.Intn(len(chars))]
 		if i == 4 {
-			vals = append(vals, '-')
+			vals[i] = '-'
+		} else {
+			vals[i] = c
 		}
-		vals = append(vals, c)
 	}
 	id = string(vals)
 	return
